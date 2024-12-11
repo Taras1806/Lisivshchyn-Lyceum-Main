@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Офіційний сайт Лісівщинського Ліцею - сучасний навчальний заклад з інноваційним підходом до освіти">
+    <title>Лісівщинський Ліцей | Головна</title>
+
+    <!-- Підключення шрифтів та бібліотек -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Основні змінні */
+        :root {
+            --primary: #1e90ff;
+            --primary-dark: #1a4c96;
+            --accent: #ff9800;
+            --text: #333;
+            --text-light: #666;
+            --light: #fff;
+            --dark: #1e1e1e;
+            --gray: #f4f4f4;
+            --border: #ddd;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius: 8px;
+            --container: 1200px;
+            --christmas-red: #D42426;
+            --christmas-green: #0F5132;
+            --christmas-gold: #FFD700;
+            --snow-color: #fff;
+        }
+
+        /* Скидання стилів */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Загальні стилі */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHk2MDlsMnlxNzhnZWYxczY0eGJqOHk4N3phMDlnaWxkcTgzbDFxayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ueUZla3JpuIC73yytr/giphy.gif') center/cover fixed;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Анімації */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-10vh) translateX(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(110vh) translateX(20px) rotate(360deg);
+            }
+        }
+
+        /* Сніжинки */
+        .snowflake {
+            position: fixed;
+            color: var(--snow-color);
+            font-size: 1.5em;
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+            animation: snowfall linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Навігація */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            animation: slideInUp 1s ease;
+        }
+
+        .nav-container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            font-weight: 700;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 8px 15px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Головний контент */
+        .main-content {
+            padding-top: 100px;
+            animation: fadeIn 1s ease;
+        }
+
+        .section {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 20px 0;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 40px;
+            animation: slideInUp 1s ease;
+        }
+
+        /* Про нас */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .stat-item i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Історія */
+        .history-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .history-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease;
+        }
+
+        .history-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease;
+        }
+
+        /* Галерея */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease;
+        }
+
+        .gallery-item iframe, .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover iframe, .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Контактна форма */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1100;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .contact-content {
+            position: relative;
+            background: linear-gradient(145deg, #ffffff 0%, #f0f0f0 100%);
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: slideInUp 0.5s ease;
+        }
+
+        .contact-info {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        /* Адаптивність */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(30, 30, 30, 0.95);
+                padding: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Стилі для Facebook кнопки */
+        .facebook-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #4267B2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .facebook-btn:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Навігація -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Лісівщинський Ліцей</a>
+            <nav class="nav-menu">
+                <a href="#about" class="nav-link">Про нас</a>
+                <a href="#history" class="nav-link">Історія</a>
+                <a href="#gallery" class="nav-link">Галерея</a>
+                <a href="#contact" class="nav-link">Контакти</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Головний контент -->
+    <main class="main-content">
+        <!-- Про нас -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">Про наш ліцей</h2>
+                <div class="about-content">
+                    <p class="about-text">
+                        Лісівщинський ліцей – це сучасний освітній заклад, який вдало поєднує багаторічні традиції з інноваційними підходами до навчання. 
+                        Завдяки професійній команді педагогів і сприятливій навчальній атмосфері, наші учні стабільно демонструють високі результати, здобуваючи перемоги на районних, обласних, а часто й всеукраїнських олімпіадах та конкурсах.
+                        Ми створюємо умови для розвитку потенціалу кожного учня, формуючи успішних та всебічно розвинених особистостей.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <i class="fas fa-user-graduate"></i>
+                            <h3>150+</h3>
+                            <p>Учнів</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <h3>20+</h3>
+                            <p>Вчителів</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-trophy"></i>
+                            <h3>100+</h3>
+                            <p>Нагород</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Історія -->
+        <section id="history" class="section">
+            <h2 class="section-title">Історія розвитку ліцею</h2>
+            <div class="history-content">
+                <p class="history-text">
+                    В 1893 році у Великодню неділю на площі біля церкви зібрався схід жителів села Лісівщина, організований селянами. На сході вирішили розпочати підготовку та в наступному році спорудити в селі школу та відбудувати спалену церкву.
+                    Під школу ніхто не хотів віддавати своєї землі. Зрештою громада постановила засипати сільське глинище. Протягом весни – літа 1894 року 4-класне приміщення школи було збудоване. Його покрили соломою. Перше дерево на шкільному подвір’ї посадив Корній Микитович Гарбарчук. Це дерево збереглося донині.
+                    В різні роки тут навчалось від однієї до трьох класних груп. Першим директором був Горобець із Чуднівської волості. Першими учнями стали: вже згаданий Корній Гарбарчук, Мусій Смолянюк, Тихін Ющенко, Гнат Смолянюк та одна дівчинка – Марія Головійчук. Шкільний музей зберігає фотографії перших вчителів Сави Аврамовича Паламарчука та Євгенії Антонівни Калько.
+                    Щосуботи священник проводив у школі навчання, а в неділю вчитель вів дітей до церкви. Учні вивчали арифметику, письмо, природознавство, історію, старослов’янську мову. Випускники третьої групи (класу) складали іспити. Ця освіта вважалася досить високою, адже з нею вчителювали, ставали землемірами.
+                    В 1934 році розпочали, а через два роки закінчили будівництво 7-річної школи (нині центральний корпус). На сесії сільської Ради прийняли рішення розібрати церкву, яка була відбудована після великої пожежі 1904 року (згоріло 70 хат!) для потреб школи. Приміщення першої школи використовувалось як житловий будинок для вчителів. Згодом його розібрали, а з матеріалу склали їдальню(нині майстерня).
+                    В 1956 році школа стала середньою, де директором був Малий Сергій Йосипович.
+                    Найдовше очолював педагогічний колектив з 1958 по 1979 рік - Блоцький Василь Якович. За цей час школа була капітально відремонтована: замінено стіни першого поверху та добудовано чотири класи. З 1972 року по 1976 рік побудовано спортивний зал, чотири класних кімнати, клас механізації, стрілецький тир.
+                    В 1979 році школу прийняв Дячук Анатолій Михайлович, який керував педколективом до 1994 року. За цей період школа набула нового вигляду – створено історико-краєзнавчий музей, роботою якого керував Блоцький Василь Якович. Побудовано два будинки для вчителів. В 1994 році було здано в експлуатацію нову шкільну їдальню на 100 місць. Школа була відомою своїми вчителями: Лопатюком Іваном Іллічем та Вайнером Євгенієм Абрамовичем, які працювали над новими педагогічними ідеями.
+                    З вересня 1994 року по вересень 1998 рік директором школи працював Хоменко Михайло Васильович. В 1997 році було проведено ліцензування професійного навчання (тракторна справа).
+                    З 1998 року по 2008 рік колектив очолював Іваненко Олександр Степанович, який дбав про поповнення навчально-матеріальної бази – облаштовано новий комп’ютерний клас, придбано перший в районі шкільний автобус, переоблаштовано класну кімнату під актову залу.
+                    У 2009 році школа перейшла під чуйне керівництво першої жінки-директора Власюк Таїси Василівни. За досить короткий час оновлено і осучаснено навчальний заклад: продовжено ліцензування професійної освіти, проведено заміну 100% віконних блоків, проведено ремонт системи опалення, придбано 2 нових шкільних автобуси, побудовано гараж, переоблаштовано шкільний краєзнавчий музей, облаштовано внутрішні туалети, проведено капітальний ремонт спортивного залу та їдальні, проведено заміну опалювального котла, та частину системи. 
+                    В зв’язку з тим, що в березні 2022 року заклад освіти був пошкоджений під час початку повномасштабного вторгнення країни-агресора розпочався капітальний ремонт головного корпусу ліцею, який триває і по цей час. Маємо надію, що вже скоро сучасні навчальні кабінети наповняться дитячим сміхом та вчительською мудрістю.
+                </p>
+                <div class="history-image">
+                    <img src="https://i.ibb.co/k3T4xy3/photo-2024-12-05-12-32-02.jpg" alt="Історичне фото ліцею">
+                </div>
+            </div>
+        </section>
+
+        <!-- Галерея -->
+        <section id="gallery" class="section">
+            <h2 class="section-title">Галерея</h2>
+            
+            <!-- Facebook кнопка -->
+            <a href="https://www.facebook.com/groups/273206514323150" target="_blank" class="facebook-btn">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <div class="gallery-grid">
+                <!-- Додаємо відео та фото -->
+                <div class="gallery-item">
+                    <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100024043394645/videos/868573431711789/" allowfullscreen></iframe>
+                </div>
+                <div class="gallery-item">
+                    <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100017134516072/videos/3430455607250626/" allowfullscreen></iframe>
+                </div>
+                <div class="gallery-item">
+                    <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100065331634920/videos/419111334606686/" allowfullscreen></iframe>
+                </div>
+                <div class="gallery-item">
+                    <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100004668244489/videos/614237614269067/" allowfullscreen></iframe>
+                </div>
+                <div class="gallery-item">
+                    <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100083728525815/videos/929222542638073/" allowfullscreen></iframe>
+                </div>
+                <div class="gallery-item">
+                    <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100024633857689/videos/929386315193496/" allowfullscreen></iframe>
+                </div>
+                <div class="gallery-item">
+                    <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100064055865661/videos/1287410178936727/" allowfullscreen></iframe>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fiev22-1.fna.fbcdn.net/v/t39.30808-6/467861871_1749798922435977_7056859960977337148_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=jGjCTwOoLFcQ7kNvgE_HZOg&_nc_zt=23&_nc_ht=scontent.fiev22-1.fna&_nc_gid=AoHUsv4ss1zplt9Wlp1oHXH&oh=00_AYAwJprwesgko7dAuGIVbu7f5-39v-EFTdMV1uMKvzgQuQ&oe=67566069" alt="Фото 1">
+                </div>
+                <div class="gallery-item">
+                    <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100064599720247/videos/394787610269059/" allowfullscreen></iframe>
+                </div>
+                <div class="gallery-item">
+                    <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/100004668244489/videos/533464346245358/" allowfullscreen></iframe>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fiev22-2.fna.fbcdn.net/v/t39.30808-6/462363612_1119511726265891_8818762518187892643_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=S2fuztPtWxgQ7kNvgFKJW9h&_nc_zt=23&_nc_ht=scontent.fiev22-2.fna&_nc_gid=ACIAQujJ5ibGOf6ZHZfJTaR&oh=00_AYAHiwvSghjt_BdMZudSaOSSKZY0M14wlTnQpuP5A8NttQ&oe=67567834" alt="Фото 2">
+                </div>
+                <!-- Додайте інші елементи галереї тут -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Контактна модалка -->
+    <div id="contact-modal" class="contact-modal">
+        <div class="contact-content">
+            <h3>Контактна інформація</h3>
+            <div class="contact-info">
+                <p><strong>Повна назва:</strong> Лісівщинський ліцей ім. О.Дубінчука Ушомирської сільської ради</p>
+                <p><strong>Адреса:</strong> 11580, Житомирська область, Коростенський район, c. Лісівщина, вул. Чкалова, 4</p>
+                <p><strong>Email:</strong> lisivchina@i.ua</p>
+                <p><strong>Директор:</strong> Власюк Таїса Василівна</p>
+                <p><strong>Телефон:</strong> 0974836936</p>
+            </div>
+            <button class="close-modal">&times;</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Ініціалізація AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Створення сніжинок
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            
+            document.body.appendChild(snowflake);
+            
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        setInterval(createSnowflake, 100);
+
+        // Контактна модалка
+        const contactLink = document.querySelector('a[href="#contact"]');
+        const contactModal = document.getElementById('contact-modal');
+        const closeModal = document.querySelector('.close-modal');
+
+        contactLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            contactModal.style.display = 'block';
+        });
+
+        closeModal.addEventListener('click', () => {
+            contactModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                contactModal.style.display = 'none';
+            }
+        });
+
+        // Мобільне меню
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
